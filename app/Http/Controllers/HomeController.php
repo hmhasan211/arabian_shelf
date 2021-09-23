@@ -32,7 +32,7 @@ class HomeController extends Controller
         $product= Product::where('active', '=', 'yes')->orderBy('id','desc')->limit(15)->get();
         $brands = Brand::where('active', '=', 'yes')->orderby('name')->get();
         $trendingproducts=Product::where('exclusive','=','yes')->where('active', '=', 'yes')->orderBy('id','desc')->limit(25)->get();
-        $onsells= Product::where('active', '=', 'yes')->where('main_price' ,'!=', null)->where('from','<=', $currentDate, '&&', 'till','>=', $currentDate )->orderBy('id','desc')->limit(15)->get();
+        $onsells= Product::where('active', '=', 'yes')->where('main_price' ,'!=', 'old_price')->where('from','<=', $currentDate, '&&', 'till','>=', $currentDate )->orderBy('id','desc')->limit(15)->get();
         // dd($onsells);
         return view('index',compact('currentDate','product','brands','trendingproducts','onsells'));
     }
