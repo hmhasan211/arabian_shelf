@@ -774,6 +774,170 @@
     <!-- woman section end  -->
 
 
+       <!-- On sell Section  -->
+       <section class="women-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-lg-3">
+                    <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
+                        <h2>Women’s</h2>
+                        <a href="#">Discover More</a>
+                    </div>
+                </div> -->
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="filter-control">
+                        <!-- <ul>
+                            <li class="active">woman</li>
+
+
+                        </ul> -->
+                        <h2>On Selling Products</h2>
+                        <img src="{{ URL::asset('/assets/frontend/img/floral-border.png')}}" alt="" loading="lazy">
+                    </div>
+                    <div class="product-slider owl-carousel">
+                        @foreach($onsells as $item)
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="{{asset('/productImage/'.$item->image1)}}" alt="" loading="lazy">
+                                    @if ($currentDate >= $item->from && $currentDate <= $item->till )
+                                    <div class="sale">Sale</div>
+                                    @endif
+
+                                    <div class="icon">
+                                        <i class="icon_heart_alt"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <li class="quick-view"><a data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}"
+                                                href="#">+ Quick View</a></li>
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">Coat</div>
+                                    <a href="#">
+                                        <h5>{{$item->name}}</h5>
+                                    </a>
+                                    <div class="product-price">
+                                    {{-- &#2547;{{$item->price}}
+                                        <span>&#2547;{{$item->old_price}}</span> --}}
+
+
+                                    @if ($currentDate >= $item->from && $currentDate <= $item->till )
+
+                                       &#2547;{{$item->main_price}}
+                                        <span>&#2547;{{$item->old_price}} </span>
+                                    @else
+                                        &#2547;{{$item->old_price}}
+                                    @endif
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        @endforeach
+                    </div>
+                    <!-- Model start  -->
+                        @foreach($onsells as $item)
+                            <div class="modal fade" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header border-0">
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="product-pic-zoom">
+                                                            <img class="product-big-img" src="{{asset('/productImage/'.$item->image1)}}" alt="" loading="lazy">
+                                                            <div class="zoom-icon">
+                                                                <i class="fa fa-search-plus"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-thumbs">
+                                                            <div class="product-thumbs-track ps-slider owl-carousel">
+                                                                <div class="pt active"
+                                                                    data-imgbigurl="{{asset('/productImage/'.$item->image1)}}"><img
+                                                                        src="{{asset('/productImage/'.$item->image1)}}" alt="" loading="lazy"></div>
+                                                                <div class="pt" data-imgbigurl="{{asset('/productImage/'.$item->image2)}}"><img
+                                                                        src="{{asset('/productImage/'.$item->image2)}}" alt="" loading="lazy"></div>
+                                                                <div class="pt" data-imgbigurl="{{asset('/productImage/'.$item->image3)}}"><img
+                                                                        src="{{asset('/productImage/'.$item->image3)}}" alt="" loading="lazy"></div>
+                                                                <div class="pt" data-imgbigurl="{{asset('/productImage/'.$item->image4)}}"><img
+                                                                        src="{{asset('/productImage/'.$item->image4)}}" alt="" loading="lazy"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <div class="product-details">
+                                                            <div class="pd-title">
+                                                                <span>oranges</span>
+                                                                <h3>{{$item->name}} </h3>
+                                                                <a href="#" class="heart-icon"><i
+                                                                        class="icon_heart_alt"></i></a>
+                                                            </div>
+                                                            <div class="pd-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <span>(5)</span>
+                                                            </div>
+                                                            <div class="pd-desc">
+                                                                <!-- <p>Lorem ipsum dolor sit amet, consectetur ing elit, sed do
+                                                                    eiusmod tempor sum dolor
+                                                                    sit amet, consectetur adipisicing elit, sed do mod tempor
+                                                                </p> -->
+                                                                {!! $item->short_description !!}
+                                                                <h4>&#2547;{{$item->price}} <span>629.99</span></h4>
+                                                            </div>
+
+                                                            <div class="quantity">
+                                                                <div class="pro-qty">
+                                                                    <input type="text" value="1">
+                                                                </div>
+                                                                <a href="#" class="primary-btn pd-cart">Add To Cart</a>
+                                                            </div>
+                                                            <!-- <ul class="pd-tags">
+                                                                <li><span>CATEGORIES</span>: More Accessories, Wallets & Cases
+                                                                </li>
+                                                                <li><span>TAGS</span>: Clothing, T-shirt, Woman</li>
+                                                            </ul> -->
+                                                            <!-- <div class="pd-share">
+                                                                <div class="p-code">Sku : 00012</div>
+                                                                <div class="pd-social">
+                                                                    <a href="#"><i class="ti-facebook"></i></a>
+                                                                    <a href="#"><i class="ti-twitter-alt"></i></a>
+                                                                    <a href="#"><i class="ti-linkedin"></i></a>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    <!-- Model end -->
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- woman section end  -->
+
      <!-- Latest Blog Section Begin -->
          <section class="latest-blog spad">
             <div class="container">
